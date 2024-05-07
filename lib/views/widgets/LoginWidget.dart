@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wauume/views/widgets/TextFormField.dart';
 
 class LoginWidget extends StatefulWidget {
   @override
@@ -20,8 +21,8 @@ class _LoginWidgetState extends State<LoginWidget> {
           child: Image.network(
             logo,
             fit: BoxFit.contain,
-            height: 300,
-            width: 200,
+            width: 300,
+            height: 250,
           ),
         ),
         Padding(
@@ -43,11 +44,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                 padding: const EdgeInsets.all(32),
                 child: Column(
                   children: [
-                
                     const Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(5),
                       child: Text(
-                        '¡Hola!',
+                        '¡Bienvenido!',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 36,
                           fontWeight: FontWeight.w600,
@@ -55,28 +56,29 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          border: OutlineInputBorder(),
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'Inicia sesión con tu correo y contraseña',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Plus Jakarta Sans',
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Login'),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                      child: Container(
+                        width: double.infinity,
+                        child: createTextFormField('Correo'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                      child: Container(
+                        width: double.infinity,
+                        child: createTextFormField('Contraseña'),
                       ),
                     ),
                   ],
