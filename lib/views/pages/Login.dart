@@ -14,14 +14,18 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: Image.network(background).image,
-          fit: BoxFit.cover,
+        body: 
+        Container(
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: Image.network(background).image,
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: LoginWidget(),
         ),
-      ),
-      child: LoginWidget(),
-    ));
+      
+    );
   }
 }
