@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
 import 'package:wauume/views/widgets/TextFormField.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class SignUpTwo extends StatefulWidget {
+  const SignUpTwo({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUpTwo> createState() => _SignUpTwoState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpTwoState extends State<SignUpTwo> {
   String background= "images/ImageSignup.jpg";
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class _SignUpState extends State<SignUp> {
                                   createTextFormField('Confirmar Contraseña'),
                                   createTextFormField('Numero Celular'),
                                   newTextButton(context, 'Ingresa Aqui', 'Login', "Register"),
-                                  newElevatedButtonBlack(context, 'Continuar', 'SignUpTwo'),
+                                  newElevatedButtonBlack(context, 'Continuar', 'Home'),
                                 ]))),
                       )
                     ]),

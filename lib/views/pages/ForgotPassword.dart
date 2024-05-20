@@ -10,7 +10,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  String background= "images/ImageForgotPassword.jpg";
+  String background = "images/ImageForgotPassword.jpg";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,23 +40,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 )
                               ],
                               gradient: const LinearGradient(
-                                colors: [Color(0xccffffff), Color.fromARGB(143, 219, 53, 3)],
+                                colors: [
+                                  Color(0xccffffff),
+                                  Color.fromARGB(143, 219, 53, 3)
+                                ],
                               ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Padding(
                                 padding: const EdgeInsets.all(20),
                                 child: Column(children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Text(
-                                      'Recuperar contraseña',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color.fromARGB(255, 8, 11, 12)),
-                                    ),
+                                  const Text(
+                                    'Recuperar contraseña',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color.fromARGB(255, 8, 11, 12)),
                                   ),
                                   const Padding(
                                     padding: EdgeInsets.all(12),
@@ -70,7 +70,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     ),
                                   ),
                                   createTextFormField('Correo'),
-                                  newElevatedButtonBlack(context, 'Enviar', 'Login'),
+                                  newElevatedButtonBlack(
+                                      context, 'Enviar', 'Login'),
                                 ]))),
                       )
                     ]),

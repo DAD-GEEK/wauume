@@ -9,10 +9,6 @@ class LoginWidget extends StatefulWidget {
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
 }
-
-const String logo =
-    'https://www.wauume.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-wauume.3379dc95.png&w=640&q=75';
-
 class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
@@ -24,15 +20,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //Logo Wauume
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  logo,
-                  fit: BoxFit.contain,
-                  width: 300,
-                  height: 250,
-                ),
-              ),
+              newLogo(250,200),
               //Container con widgets
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -86,7 +74,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               context, 'Iniciar Sesión', "Home"),
                           Column(
                             children: [
-                              newTextButton(context, '¿Olvidaste tu contraseña?', 'ForgotPassword', false),
+                              newTextButton(context, '¿Olvidaste tu contraseña?', 'ForgotPassword', ""),
                               const Text('o con',
                                   style: TextStyle(
                                     color: Color(0xFFFFFFFF),
@@ -123,7 +111,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       fontWeight: FontWeight.w600,
                                     ))),
                           ),
-                          newTextButton(context,'Registrate Ahora!', "SignUp",true),
+                          newTextButton(context,'Registrate Ahora!', "SignUp","Signup"),
                         ],
                       ),
                     )),
@@ -133,7 +121,4 @@ class _LoginWidgetState extends State<LoginWidget> {
         ));
   }
 
-
-
-  
 }
