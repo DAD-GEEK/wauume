@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:wauume/views/pages/Home.dart';
+import 'package:wauume/views/pages/ForgotPassword.dart';
+import 'package:wauume/views/pages/SignUp.dart';
 import 'package:wauume/views/widgets/TextFormField.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -80,14 +83,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16, 0, 16, 0),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => loadNewPage(context, 'Home'),
                               style: ButtonStyle(
-                                minimumSize: MaterialStateProperty.all(
+                                minimumSize: WidgetStateProperty.all(
                                   const Size(double.infinity, 44),
                                 ),
-                                backgroundColor: MaterialStateProperty.all(
+                                backgroundColor: WidgetStateProperty.all(
                                     const Color(0xFF14171A)),
-                                shape: MaterialStateProperty.all(
+                                shape: WidgetStateProperty.all(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
@@ -105,7 +108,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           Column(
                             children: [
                               TextButton(
-                                onPressed: () async {},
+                                onPressed: () => loadNewPage(context, 'ForgotPassword'),
                                 child: const Text(
                                   '¿Olvidaste tu contraseña?',
                                   style: TextStyle(
@@ -129,14 +132,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16, 10, 16, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () {},
+                                onPressed: () => loadNewPage(context, 'Home'),
                                 style: ButtonStyle(
-                                  minimumSize: MaterialStateProperty.all(
+                                  minimumSize: WidgetStateProperty.all(
                                     const Size(double.infinity, 44),
                                   ),
-                                  backgroundColor: MaterialStateProperty.all(
+                                  backgroundColor: WidgetStateProperty.all(
                                       const Color(0xFFF1F4F8)),
-                                  shape: MaterialStateProperty.all(
+                                  shape: WidgetStateProperty.all(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
@@ -158,7 +161,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             children: [
                               const Text('¿No tienes una cuenta?'),
                               TextButton(
-                                onPressed: () async {},
+                                onPressed: () => loadNewPage(context, 'SignUp'),
                                 child: const Text(
                                   'Registrate Ahora!',
                                   style: TextStyle(
@@ -179,4 +182,22 @@ class _LoginWidgetState extends State<LoginWidget> {
           ),
         ));
   }
+
+ loadNewPage(BuildContext context, String page) {
+  final pageRoutes = {
+    'SignUp': () => SignUp(),
+    'Home': () => Home(),
+    'ForgotPassword': () => ForgotPassword(),
+  };
+
+  if (pageRoutes.containsKey(page)) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => pageRoutes[page]!(),
+      ),
+    );
+  } else {
+    throw Exception('Invalid page: $page');
+  }
+}
 }
