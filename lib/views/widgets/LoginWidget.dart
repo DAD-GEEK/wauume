@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wauume/views/pages/Home.dart';
-import 'package:wauume/views/pages/ForgotPassword.dart';
-import 'package:wauume/views/pages/SignUp.dart';
+import 'package:wauume/views/widgets/Buttons.dart';
 import 'package:wauume/views/widgets/TextFormField.dart';
 
 class LoginWidget extends StatefulWidget {
+  const LoginWidget({super.key});
+
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
 }
@@ -47,7 +47,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                         )
                       ],
                       gradient: const LinearGradient(
-                        colors: [Color(0xccffffff), Color(0xC4DB3503)],
+                        colors: [
+                          Color(0xccffffff),
+                          Color.fromARGB(168, 233, 80, 34)
+                        ],
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -79,46 +82,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           createTextFormField('Correo'),
                           createTextFormField('Contraseña'),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16, 0, 16, 0),
-                            child: ElevatedButton(
-                              onPressed: () => loadNewPage(context, 'Home'),
-                              style: ButtonStyle(
-                                minimumSize: WidgetStateProperty.all(
-                                  const Size(double.infinity, 44),
-                                ),
-                                backgroundColor: WidgetStateProperty.all(
-                                    const Color(0xFF14171A)),
-                                shape: WidgetStateProperty.all(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ),
-                              child: const Text('Iniciar Sesión',
-                                  style: TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontSize: 16,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                            ),
-                          ),
+                          newElevatedButtonBlack(
+                              context, 'Iniciar Sesión', "Home"),
                           Column(
                             children: [
-                              TextButton(
-                                onPressed: () => loadNewPage(context, 'ForgotPassword'),
-                                child: const Text(
-                                  '¿Olvidaste tu contraseña?',
-                                  style: TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontSize: 14,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                              newTextButton(context, '¿Olvidaste tu contraseña?', 'ForgotPassword', false),
                               const Text('o con',
                                   style: TextStyle(
                                     color: Color(0xFFFFFFFF),
@@ -155,25 +123,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       fontWeight: FontWeight.w600,
                                     ))),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text('¿No tienes una cuenta?'),
-                              TextButton(
-                                onPressed: () => loadNewPage(context, 'SignUp'),
-                                child: const Text(
-                                  'Registrate Ahora!',
-                                  style: TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontSize: 14,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                          newTextButton(context,'Registrate Ahora!', "SignUp",true),
                         ],
                       ),
                     )),
@@ -183,21 +133,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         ));
   }
 
- loadNewPage(BuildContext context, String page) {
-  final pageRoutes = {
-    'SignUp': () => SignUp(),
-    'Home': () => Home(),
-    'ForgotPassword': () => ForgotPassword(),
-  };
 
-  if (pageRoutes.containsKey(page)) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => pageRoutes[page]!(),
-      ),
-    );
-  } else {
-    throw Exception('Invalid page: $page');
-  }
-}
+
+  
 }
