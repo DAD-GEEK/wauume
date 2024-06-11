@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "962592026014",
+    "project_id": "wauume-66af9",
+    "storage_bucket": "wauume-66af9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962592026014:android:f98d7a65f7e57f69fbba8f",
+        "android_client_info": {
+          "package_name": "com.example.wauume"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs8RJmeRVVesUoif1MNk_3M6mbRKnYfZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
