@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
-import 'package:wauume/views/widgets/TextFormField.dart';
+import 'package:wauume/views/widgets/FormField.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -77,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                                   createTextFormField('Correo'),
                                   createTextFormField('Contraseña'),
                                   createTextFormField('Confirmar Contraseña'),
-                                  createTextFormField('Numero Celular'),
+                                  createTextFormField('Celular'),
                                   newTextButton(context, 'Ingresa Aqui', 'Login', "Register"),
                                   newElevatedButtonBlack(context, 'Continuar', 'SignUpTwo'),
                                 ]))),

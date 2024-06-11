@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
-import 'package:wauume/views/widgets/TextFormField.dart';
+import 'package:wauume/views/widgets/FormField.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});

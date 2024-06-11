@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
-import 'package:wauume/views/widgets/TextFormField.dart';
+import 'package:wauume/views/widgets/FormField.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -66,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontFamily: 'Plus Jakarta Sans',
-                                          color: Color(0xFF101213)),
+                                          color: Color.fromARGB(255, 255, 255, 255)),
                                     ),
                                   ),
                                   createTextFormField('Correo'),

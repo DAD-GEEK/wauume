@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Padding createTextFormField(labetext) {
   return Padding(
-     padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+    padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
     child: Container(
       width: double.infinity,
       child: TextFormField(
@@ -53,7 +53,6 @@ Padding createTextFormField(labetext) {
           filled: true,
           fillColor: const Color(0xFFF1F4F8),
           suffixIcon: assingSufixIcon(labetext),
-          
         ),
       ),
     ),
@@ -61,10 +60,11 @@ Padding createTextFormField(labetext) {
 }
 
 assingSufixIcon(labetext) {
-  if (labetext == 'Contraseña') {
+  if (labetext == 'Contraseña' || labetext == 'Confirmar Contraseña') {
     return IconButton(
-              icon: const Icon(Icons.remove_red_eye),
-              onPressed: () {},);
+      icon: const Icon(Icons.remove_red_eye),
+      onPressed: () {},
+    );
   } else {
     return null;
   }
@@ -73,23 +73,23 @@ assingSufixIcon(labetext) {
 assignTextInputType(labeltext) {
   if (labeltext == 'Correo') {
     return TextInputType.emailAddress;
-  }
-  if (labeltext == 'Contraseña') {
+  } else if (labeltext == 'Contraseña' || labeltext == 'Confirmar Contraseña') {
     return TextInputType.visiblePassword;
-  } else {
+  }else if (labeltext == 'Celular') {
+    return TextInputType.phone;
+   }
+   else {
     return TextInputType.text;
-  }
+  }   
 }
 
 assignAutoFillHints(labeltext) {
   if (labeltext == 'Correo') {
     return [AutofillHints.email];
   }
-  if (labeltext == 'Contraseña') {
+  if (labeltext == 'Contraseña' || labeltext == 'Confirmar Contraseña') {
     return [AutofillHints.password];
   } else {
     return null;
   }
 }
-
-
