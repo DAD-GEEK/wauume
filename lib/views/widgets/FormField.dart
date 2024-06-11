@@ -61,9 +61,7 @@ Padding createTextFormField(labetext) {
   );
 }
 
-assignValitation(labetext) {
-
-}
+assignValitation(labetext) {}
 
 assingSufixIcon(labetext) {
   if (labetext == 'Contraseña' || labetext == 'Confirmar Contraseña') {
@@ -81,12 +79,11 @@ assignTextInputType(labeltext) {
     return TextInputType.emailAddress;
   } else if (labeltext == 'Contraseña' || labeltext == 'Confirmar Contraseña') {
     return TextInputType.visiblePassword;
-  }else if (labeltext == 'Celular') {
+  } else if (labeltext == 'Celular') {
     return TextInputType.phone;
-   }
-   else {
+  } else {
     return TextInputType.text;
-  }   
+  }
 }
 
 assignAutoFillHints(labeltext) {
@@ -98,4 +95,76 @@ assignAutoFillHints(labeltext) {
   } else {
     return null;
   }
+}
+
+decoration(String label) {
+  return InputDecoration(
+    labelText: label,
+    labelStyle: labelStyle(),
+    enabledBorder: enabledBorder(),
+    focusedBorder: focusedBorder(),
+    errorBorder: errorBorder(),
+    focusedErrorBorder: focusedErrorBorder(),
+    filled: true,
+    fillColor: const Color(0xFFF1F4F8),
+    suffixIcon: assingSufixIcon(label),
+  );
+}
+
+textStyle(){
+  return const TextStyle(
+    fontFamily: 'Plus Jakarta Sans',
+    color: Color(0xFF101213),
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+}
+
+focusedErrorBorder() {
+  return OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: Color(0xFFF1F4F8),
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(12),
+  );
+}
+
+errorBorder() {
+  return OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: Color(0xFFE0E3E7),
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(12),
+  );
+}
+
+focusedBorder() {
+  return OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: Color(0xFF4B39EF),
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(12),
+  );
+}
+
+enabledBorder() {
+  return OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: Color(0xFFF1F4F8),
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(12),
+  );
+}
+
+labelStyle() {
+  return const TextStyle(
+    fontFamily: 'Plus Jakarta Sans',
+    color: Color(0xFF57636C),
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
 }

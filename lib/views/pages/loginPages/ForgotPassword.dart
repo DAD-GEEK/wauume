@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wauume/controllers/LoginController.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
-import 'package:wauume/views/widgets/TextFormField.dart';
+import 'package:wauume/views/widgets/FormField.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -10,7 +11,10 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  String labelEmail = "Correo";
+  String email = "";
   String background = "images/ImageForgotPassword.jpg";
+  GlobalKey<FormState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,12 +70,29 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontFamily: 'Plus Jakarta Sans',
-                                          color: Color(0xFF101213)),
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255)),
                                     ),
                                   ),
-                                  createTextFormField('Correo'),
-                                  newElevatedButtonBlack(
-                                      context, 'Enviar', 'Login'),
+                                   Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: TextFormField(
+                                  onChanged: (valor) {
+                                    email = valor;
+                                  },
+                                  style: textStyle(),
+                                  autofocus: true,
+                                  validator: validTextFormtype,
+                                  keyboardType: assignTextInputType(labelEmail),
+                                  autofillHints:
+                                      assignAutoFillHints(labelEmail),
+                                  decoration: decoration(labelEmail)),
+                            ),
+                          ),
+                           newElevatedButtonBlack(_key, context,
+                              'Enviar', "Login", email),
                                 ]))),
                       )
                     ]),

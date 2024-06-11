@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:wauume/controllers/LoginController.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
-import 'package:wauume/views/widgets/TextFormField.dart';
+import 'package:wauume/views/widgets/FormField.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
+  
 }
+
 class _LoginWidgetState extends State<LoginWidget> {
+  bool _passwordVisible = false;
+  String labelEmail = "Correo";
+  String labelPassword = "Contraseña";
+  String email = "";
+  String password = "";
+  GlobalKey<FormState> _key = GlobalKey();
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+  }
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +34,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //Logo Wauume
-              newLogo(250,200),
+              newLogo(250, 200),
               //Container con widgets
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -68,13 +82,75 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   color: Color(0xFF101213)),
                             ),
                           ),
-                          createTextFormField('Correo'),
-                          createTextFormField('Contraseña'),
-                          newElevatedButtonBlack(
-                              context, 'Iniciar Sesión', "Home"),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                            child: Container(
+                              width: double.infinity,
+                              child: TextFormField(
+                                  onChanged: (valor) {
+                                    email = valor;
+                                  },
+                                  style: textStyle(),
+                                  autofocus: true,
+                                  validator: validTextFormtype,
+                                  keyboardType: assignTextInputType(labelEmail),
+                                  autofillHints:
+                                      assignAutoFillHints(labelEmail),
+                                  decoration: decoration(labelEmail)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                            child: Container(
+                              width: double.infinity,
+                              child: TextFormField(
+                                obscureText: !_passwordVisible,
+                                onChanged: (valor) {
+                                  password = valor;
+                                },
+                                style: textStyle(),
+                                autofocus: true,
+                                validator: validTextFormtype,
+                                keyboardType:
+                                    assignTextInputType(labelPassword),
+                                autofillHints:
+                                    assignAutoFillHints(labelPassword),
+                                decoration: InputDecoration(
+                                  labelText: labelPassword,
+                                  labelStyle: labelStyle(),
+                                  enabledBorder: enabledBorder(),
+                                  focusedBorder: focusedBorder(),
+                                  errorBorder: errorBorder(),
+                                  focusedErrorBorder: focusedErrorBorder(),
+                                  filled: true,
+                                  fillColor: const Color(0xFFF1F4F8),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _passwordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: const Color(0xFF57636C),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _passwordVisible = !_passwordVisible;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          newElevatedButtonBlack(_key, context,
+                              'Iniciar Sesión', "Home", email, password),
                           Column(
                             children: [
-                              newTextButton(context, '¿Olvidaste tu contraseña?', 'ForgotPassword', ""),
+                              newTextButton(
+                                  _key,
+                                  context,
+                                  '¿Olvidaste tu contraseña?',
+                                  'ForgotPassword',
+                                  ""),
                               const Text('o con',
                                   style: TextStyle(
                                     color: Color(0xFFFFFFFF),
@@ -88,7 +164,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16, 10, 16, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () => loadNewPage(context, 'Home'),
+                                onPressed: () =>
+                                    loadNewPage(_key, context, 'Home'),
                                 style: ButtonStyle(
                                   minimumSize: WidgetStateProperty.all(
                                     const Size(double.infinity, 44),
@@ -111,7 +188,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       fontWeight: FontWeight.w600,
                                     ))),
                           ),
-                          newTextButton(context,'Registrate Ahora!', "SignUp","Signup"),
+                          newTextButton(_key, context, 'Registrate Ahora!',
+                              "SignUp", "Signup"),
                         ],
                       ),
                     )),
@@ -120,5 +198,4 @@ class _LoginWidgetState extends State<LoginWidget> {
           ),
         ));
   }
-
 }
