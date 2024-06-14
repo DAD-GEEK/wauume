@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wauume/controllers/LoginController.dart';
+import 'package:wauume/controllers/login/LoginController.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
 import 'package:wauume/views/widgets/FormField.dart';
 
@@ -84,11 +84,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   },
                                   style: textStyle(),
                                   autofocus: true,
-                                  validator: validTextFormtype,
+                                  validator: validEmailFormtype,
                                   keyboardType: assignTextInputType(labelEmail),
                                   autofillHints:
                                       assignAutoFillHints(labelEmail),
-                                  decoration: decoration(labelEmail)),
+                                  decoration: decorationTextFormField(labelEmail)),
                             ),
                           ),
                            newElevatedButtonBlack(_key, context,

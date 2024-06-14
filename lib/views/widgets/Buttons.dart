@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wauume/controllers/LoginController.dart';
+import 'package:wauume/controllers/login/LoginController.dart';
+import 'package:wauume/views/widgets/FormField.dart';
 
 Padding newElevatedButtonBlack(
     GlobalKey<FormState> _key, BuildContext context, String text, String page,
@@ -8,11 +9,7 @@ Padding newElevatedButtonBlack(
     padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
     child: ElevatedButton(
       onPressed: () {
-        if (text == "Iniciar Sesión") {
-          validate(_key, context, page, email: email, password: password);
-        } else {
-          loadNewPage(_key, context, page);
-        }
+        loadNewPage(_key, context, page);
       },
       style: ButtonStyle(
         minimumSize: WidgetStateProperty.all(
@@ -48,12 +45,7 @@ Row newTextButton(GlobalKey<FormState> _key, BuildContext context, String text,
         onPressed: () => loadNewPage(_key, context, page),
         child: Text(
           text,
-          style: const TextStyle(
-            color: Color(0xFFFFFFFF),
-            fontSize: 14,
-            fontFamily: 'Plus Jakarta Sans',
-            fontWeight: FontWeight.w600,
-          ),
+          style: assignTextStyleButton(),
         ),
       ),
     ],
@@ -100,3 +92,31 @@ AppBar Appbar() {
         ),
       ]);
 }
+
+assigButtonStyle() {
+  return ButtonStyle(
+    minimumSize: WidgetStateProperty.all(
+      const Size(double.infinity, 44),
+    ),
+    backgroundColor: WidgetStateProperty.all(const Color(0xFF14171A)),
+    shape: WidgetStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+  );
+}
+
+  ButtonStyle assignButtonStyleGoogle() {
+    return ButtonStyle(
+      minimumSize: WidgetStateProperty.all(
+        const Size(double.infinity, 44),
+      ),
+      backgroundColor: WidgetStateProperty.all(const Color(0xFFF1F4F8)),
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+    );
+  }

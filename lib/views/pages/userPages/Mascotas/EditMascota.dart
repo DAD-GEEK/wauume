@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wauume/controllers/MascotasProvider.dart';
+import 'package:wauume/controllers/mascotas/MascotasProvider.dart';
 import 'package:wauume/models/MascotaModel.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
 

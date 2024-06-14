@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wauume/controllers/LoginController.dart';
 
 Padding createTextFormField(labetext) {
   return Padding(
@@ -14,7 +13,12 @@ Padding createTextFormField(labetext) {
           fontWeight: FontWeight.w500,
         ),
         autofocus: true,
-        validator: validTextFormtype,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Campo obligatorio';
+          }
+          return null;
+        },
         keyboardType: assignTextInputType(labetext),
         autofillHints: assignAutoFillHints(labetext),
         decoration: InputDecoration(
@@ -54,24 +58,10 @@ Padding createTextFormField(labetext) {
           ),
           filled: true,
           fillColor: const Color(0xFFF1F4F8),
-          suffixIcon: assingSufixIcon(labetext),
         ),
       ),
     ),
   );
-}
-
-assignValitation(labetext) {}
-
-assingSufixIcon(labetext) {
-  if (labetext == 'Contraseña' || labetext == 'Confirmar Contraseña') {
-    return IconButton(
-      icon: const Icon(Icons.remove_red_eye),
-      onPressed: () {},
-    );
-  } else {
-    return null;
-  }
 }
 
 assignTextInputType(labeltext) {
@@ -97,7 +87,7 @@ assignAutoFillHints(labeltext) {
   }
 }
 
-decoration(String label) {
+decorationTextFormField(String label) {
   return InputDecoration(
     labelText: label,
     labelStyle: labelStyle(),
@@ -107,16 +97,33 @@ decoration(String label) {
     focusedErrorBorder: focusedErrorBorder(),
     filled: true,
     fillColor: const Color(0xFFF1F4F8),
-    suffixIcon: assingSufixIcon(label),
+    hintText: assingHintText(label),
   );
 }
 
-textStyle(){
+assingHintText(String label) {
+  if (label == 'Correo') {
+    return "Ingrese su correo";
+  } else if (label == 'Contraseña') {
+    return "Ingrese su contraseña";
+  }
+}
+
+textStyle() {
   return const TextStyle(
     fontFamily: 'Plus Jakarta Sans',
     color: Color(0xFF101213),
     fontSize: 16,
     fontWeight: FontWeight.w500,
+  );
+}
+
+assignTextStyleButton() {
+  return const TextStyle(
+    color: Color(0xFFFFFFFF),
+    fontSize: 16,
+    fontFamily: 'Plus Jakarta Sans',
+    fontWeight: FontWeight.w600,
   );
 }
 

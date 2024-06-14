@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wauume/controllers/MascotasProvider.dart';
+import 'package:wauume/controllers/mascotas/MascotasProvider.dart';
 import 'package:wauume/views/pages/loginPages/Login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -42,10 +42,8 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Inicializar Firebase en el FutureBuilder
       future: _initialization,
       builder: (context, snapshot) {
-        // Comprobar si Firebase se inicializó correctamente
         if (snapshot.connectionState == ConnectionState.done) {
           return const MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -55,7 +53,6 @@ class _MainAppState extends State<MainApp> {
           );
         }
 
-        // Si Firebase aún no se inicializó, mostrar un CircularProgressIndicator
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const MaterialApp(
             home: Scaffold(
@@ -66,7 +63,6 @@ class _MainAppState extends State<MainApp> {
           );
         }
 
-        // Si algo salió mal...
         return const MaterialApp(
           home: Scaffold(
             body: Center(
