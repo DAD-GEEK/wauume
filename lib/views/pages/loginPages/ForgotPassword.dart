@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wauume/controllers/login/LoginController.dart';
+import 'package:wauume/controllers/ForgotController.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
+import 'package:wauume/views/widgets/Container.dart';
 import 'package:wauume/views/widgets/FormField.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -36,21 +37,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         padding: const EdgeInsets.all(16),
                         child: Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 4,
-                                  color: Color(0x33000000),
-                                )
-                              ],
-                              gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xccffffff),
-                                  Color.fromARGB(143, 219, 53, 3)
-                                ],
-                              ),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
+                            decoration: containerBoxDecoration(),
                             child: Padding(
                               padding: const EdgeInsets.all(20),
                               child: Column(children: [
@@ -62,16 +49,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       fontWeight: FontWeight.w600,
                                       color: Color.fromARGB(255, 8, 11, 12)),
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.all(12),
+                                Padding(
+                                  padding: const EdgeInsets.all(12),
                                   child: Text(
                                     'Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.',
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255)),
+                                    style: assignTextStyleButton(),
                                   ),
                                 ),
                                 Form(

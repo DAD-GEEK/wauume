@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:wauume/controllers/mascotas/MascotasProvider.dart';
 import 'package:wauume/models/MascotaModel.dart';
 
-class MascotaController {
+class UserController {
 
   FirebaseFirestore db = FirebaseFirestore.instance;
-  final String collection = 'tasks';
+  final String collection = 'Users';
 
-  Future<String?> createPet(GlobalKey<FormState> key,
+  Future<String?> createUser(GlobalKey<FormState> key,
     {required dynamic photo, required String? carnetVacunacion, required String? nombre, required dynamic categoria, required String? tamano, required int? edad, required String? raza,
     required MascotasProvider provider,
     required BuildContext context}) async {

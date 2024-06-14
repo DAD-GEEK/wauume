@@ -25,7 +25,7 @@ Padding newElevatedButtonBlack(
       child: Text(text,
           style: const TextStyle(
             color: Color(0xFFFFFFFF),
-            fontSize: 16,
+            fontSize: 14,
             fontFamily: 'Plus Jakarta Sans',
             fontWeight: FontWeight.w600,
           )),

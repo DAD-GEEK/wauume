@@ -5,11 +5,16 @@ import 'package:wauume/views/pages/loginPages/Login.dart';
 import 'package:wauume/views/pages/userPages/Home.dart';
 import 'package:wauume/views/pages/signupPages/SignUp.dart';
 
-void login(GlobalKey<FormState> formKey, BuildContext context,
-    {required String email, required String password}) {
+void forgotpassword (GlobalKey<FormState> formKey, BuildContext context,
+    {required String email}){
   final formState = formKey.currentState;
   if (formState != null && formState.validate()) {
-    loadNewPage(context, 'Home');
+    resetPassword(email);
+    loadNewPage(context, 'Login');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Correo enviado con éxito'),
+      duration: Duration(seconds: 1)));
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Datos no invalidos'),
@@ -27,21 +32,8 @@ String? validEmailFormtype(value) {
   return null;
 }
 
-String? validPasswordFormType(value) {
-  if (value == null || value.isEmpty) {
-    return 'Por favor ingrese una contraseña';
-  } else if (value.length < 6) {
-    return 'La contraseña debe tener al menos 6 caracteres';
-  }
-  return null;
-}
-
-
 loadNewPage(BuildContext context, String page) {
   final pageRoutes = {
-    'SignUp': () => const SignUp(),
-    'Home': () => const Home(),
-    'ForgotPassword': () => const ForgotPassword(),
     'Login': () => const Login(),
   };
 
@@ -54,10 +46,4 @@ loadNewPage(BuildContext context, String page) {
   } else {
     throw Exception('Invalid page: $page');
   }
-}
-
-
-void logout(BuildContext context) {
-  signOut(context);
-  loadNewPage(context, 'Login');
 }

@@ -10,7 +10,7 @@ class NewMascotaPage extends StatefulWidget {
 }
 
 class _CreateMascotaPageState extends State<NewMascotaPage> {
-  GlobalKey<FormState> _key = GlobalKey();
+  final GlobalKey<FormState> _key = GlobalKey();
 
   dynamic photo;
   dynamic carnetVacunacion;
@@ -26,7 +26,7 @@ class _CreateMascotaPageState extends State<NewMascotaPage> {
   List<String> tamano = <String>["Pequeño", "Mediano", "Grande"];
   int? edad;
   String? raza;
-  MascotaController _petController = MascotaController();
+  final MascotaController _petController = MascotaController();
 
   @override
   Widget build(BuildContext context) {

@@ -175,3 +175,30 @@ labelStyle() {
     fontWeight: FontWeight.w500,
   );
 }
+
+textStyleTitle() {
+  return const TextStyle(
+    fontSize: 36,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 8, 11, 12),
+  );
+}
+
+newTextFormField(String value, validatorform, String label) {
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+    child: SizedBox(
+      width: double.infinity,
+      child: TextFormField(
+          onChanged: (valor) {
+            value = valor;
+          },
+          controller: TextEditingController(text: value),
+          validator: validatorform,
+          style: textStyle(),
+          keyboardType: assignTextInputType(label),
+          autofillHints: assignAutoFillHints(label),
+          decoration: decorationTextFormField(label)),
+    ),
+  );
+}
