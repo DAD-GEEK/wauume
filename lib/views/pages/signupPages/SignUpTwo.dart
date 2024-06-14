@@ -86,10 +86,9 @@ class _SignUpTwoState extends State<SignUpTwo> {
                               createTextFormField('Ciudad'),
                               createTextFormField('Fecha de Nacimiento'),
                               newTextButton(
-                                _key,
                                   context, 'Ingresa Aqui', 'Login', "Register"),
-                              newElevatedButtonBlack(_key,
-                                  context, 'Crear Cuenta', 'Home'),
+                              newElevatedButtonBlack(
+                                  _key, context, 'Crear Cuenta', 'Home'),
                             ]))),
                   )
                 ]),

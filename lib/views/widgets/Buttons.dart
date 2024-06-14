@@ -9,7 +9,7 @@ Padding newElevatedButtonBlack(
     padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
     child: ElevatedButton(
       onPressed: () {
-        loadNewPage(_key, context, page);
+        loadNewPage(context, page);
       },
       style: ButtonStyle(
         minimumSize: WidgetStateProperty.all(
@@ -33,7 +33,7 @@ Padding newElevatedButtonBlack(
   );
 }
 
-Row newTextButton(GlobalKey<FormState> _key, BuildContext context, String text,
+Row newTextButton(BuildContext context, String text,
     String page, String option) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +42,7 @@ Row newTextButton(GlobalKey<FormState> _key, BuildContext context, String text,
       if (option == "Signup") const Text("¿No tienes una cuenta?"),
       if (option == "Register") const Text("¿Ya tienes una cuenta?"),
       TextButton(
-        onPressed: () => loadNewPage(_key, context, page),
+        onPressed: () => loadNewPage(context, page),
         child: Text(
           text,
           style: assignTextStyleButton(),
@@ -78,17 +78,20 @@ ClipRRect newLogo(double width, double height) {
   );
 }
 
-AppBar Appbar() {
+AppBar Appbar(BuildContext context) {
   return AppBar(
       title: newLogo(250, 31),
       leading: IconButton(
-        icon: Icon(Icons.notifications_none_outlined),
+        icon: const Icon(Icons.notifications_none_outlined),
         onPressed: () {},
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.logout),
-          onPressed: () {},
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            logout(context);
+          
+          },
         ),
       ]);
 }

@@ -12,6 +12,7 @@ loadNewSection(GlobalKey<FormState> formKey,BuildContext context, String page) {
     'Favoritos': () => const Favoritos(),
     'Mascotas': () => Mascotas(),
     'Perfil' : () => const Perfil(),
+    
   };
 
   if (pageRoutes.containsKey(page)) {
@@ -24,3 +25,4 @@ loadNewSection(GlobalKey<FormState> formKey,BuildContext context, String page) {
     throw Exception('Invalid page: $page');
   }
 }
+

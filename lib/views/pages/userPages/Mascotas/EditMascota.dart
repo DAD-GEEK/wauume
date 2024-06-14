@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wauume/controllers/mascotas/MascotasProvider.dart';
 import 'package:wauume/models/MascotaModel.dart';
-import 'package:wauume/views/widgets/Buttons.dart';
 
 class EditMascota extends StatefulWidget {
   final int index;
@@ -20,7 +19,6 @@ class _EditPetPageState extends State<EditMascota> {
   Widget build(BuildContext context) {
     int index = widget.index;
     return Scaffold(
-      appBar: Appbar(),
       body: Consumer<MascotasProvider>(
           builder: (context, petProvider, child) => PetForm(petProvider,index)),
     );

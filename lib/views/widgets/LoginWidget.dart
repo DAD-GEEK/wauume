@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wauume/controllers/login/LoginController.dart';
+import 'package:wauume/controllers/login/firebase_service.dart';
 import 'package:wauume/views/widgets/Buttons.dart';
 import 'package:wauume/views/widgets/Container.dart';
 import 'package:wauume/views/widgets/FormField.dart';
@@ -165,7 +167,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 children: [
                                   TextButton(
                                     onPressed: () => loadNewPage(
-                                        _key, context, 'ForgotPassword'),
+                                        context, 'ForgotPassword'),
                                     child: Text(
                                       '¿Olvidaste tu contraseña?',
                                       style: assignTextStyleButton(),
@@ -184,8 +186,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16, 10, 16, 10),
                             child: ElevatedButton.icon(
-                                onPressed: () =>
-                                    loadNewPage(_key, context, 'Home'),
+                                onPressed: () async {
+                                  UserCredential userCredential = await signInWithGoogle();
+                                  print(userCredential) ;
+                                  loadNewPage(context, 'Home');
+                                                                },
                                 style: assignButtonStyleGoogle(),
                                 icon: const FaIcon(FontAwesomeIcons.google,
                                     color: Color(0xC4DB3503)),
@@ -194,7 +199,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   style: textStyle(),
                                 )),
                           ),
-                          newTextButton(_key, context, 'Registrate Ahora!',
+                          newTextButton(context, 'Registrate Ahora!',
                               "SignUp", "Signup"),
                         ],
                       ),

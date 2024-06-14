@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wauume/controllers/login/firebase_service.dart';
 import 'package:wauume/views/pages/loginPages/ForgotPassword.dart';
+import 'package:wauume/views/pages/loginPages/Login.dart';
 import 'package:wauume/views/pages/userPages/Home.dart';
 import 'package:wauume/views/pages/signupPages/SignUp.dart';
 import 'package:wauume/views/pages/signupPages/SignUpTwo.dart';
@@ -8,7 +10,25 @@ void login(GlobalKey<FormState> formKey, BuildContext context,
     {required String email, required String password}) {
   final formState = formKey.currentState;
   if (formState != null && formState.validate()) {
-    loadNewPage(formKey, context, 'Home');
+    loadNewPage(context, 'Home');
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Datos no invalidos'),
+      duration: Duration(seconds: 1)),
+    );
+  }
+}
+
+void forgotpassword (GlobalKey<FormState> formKey, BuildContext context,
+    {required String email}){
+  final formState = formKey.currentState;
+  if (formState != null && formState.validate()) {
+    resetPassword(email);
+    loadNewPage(context, 'Login');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Correo enviado con éxito'),
+      duration: Duration(seconds: 1)));
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Datos no invalidos'),
@@ -35,12 +55,13 @@ String? validEmailFormtype(value) {
   return null;
 }
 
-loadNewPage(GlobalKey<FormState> formKey, BuildContext context, String page) {
+loadNewPage(BuildContext context, String page) {
   final pageRoutes = {
     'SignUp': () => const SignUp(),
     'Home': () => const Home(),
     'ForgotPassword': () => const ForgotPassword(),
     'SignUpTwo': () => const SignUpTwo(),
+    'Login': () => const Login(),
   };
 
   if (pageRoutes.containsKey(page)) {
@@ -52,4 +73,10 @@ loadNewPage(GlobalKey<FormState> formKey, BuildContext context, String page) {
   } else {
     throw Exception('Invalid page: $page');
   }
+}
+
+
+void logout(BuildContext context) {
+  signOut(context);
+  loadNewPage(context, 'Login');
 }

@@ -88,7 +88,7 @@ class _SignUpState extends State<SignUp> {
                               createTextFormField('Contraseña'),
                               createTextFormField('Confirmar Contraseña'),
                               createTextFormField('Celular'),
-                              newTextButton(_key,
+                              newTextButton(
                                   context, 'Ingresa Aqui', 'Login', "Register"),
                               newElevatedButtonBlack(_key,
                                   context, 'Continuar', 'SignUpTwo'),

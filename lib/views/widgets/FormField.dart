@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Padding createTextFormField(labetext) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
-    child: Container(
+    child: SizedBox(
       width: double.infinity,
       child: TextFormField(
         style: const TextStyle(

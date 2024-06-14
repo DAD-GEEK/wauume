@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wauume/controllers/login/LoginController.dart';
 import 'package:wauume/views/pages/userPages/Busqueda.dart';
 import 'package:wauume/views/pages/userPages/Favoritos.dart';
 import 'package:wauume/views/pages/userPages/Mascotas/Mascotas.dart';
@@ -13,6 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   int _categoriaActiva = 0;
   static var paginas = <Widget>[
     Busqueda(),
@@ -23,7 +25,21 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Appbar(),
+      appBar: AppBar(
+      title: newLogo(250, 31),
+      leading: IconButton(
+        icon: const Icon(Icons.notifications_none_outlined),
+        onPressed: () {},
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            logout(context);
+          
+          },
+        ),
+      ]),
       body: paginas[_categoriaActiva],
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: const Color(0xffDB3500),

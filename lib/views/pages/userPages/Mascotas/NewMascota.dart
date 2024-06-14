@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wauume/controllers/mascotas/MascotaController.dart';
 import 'package:wauume/controllers/mascotas/MascotasProvider.dart';
-import 'package:wauume/views/widgets/Buttons.dart';
+
 
 class NewMascotaPage extends StatefulWidget {
   @override
@@ -31,7 +31,6 @@ class _CreateMascotaPageState extends State<NewMascotaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Appbar(),
       body: Consumer<MascotasProvider>(
           builder: (context, petProvider, child) => PetForm(petProvider)),
     );
